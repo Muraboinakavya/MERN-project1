@@ -1,0 +1,24 @@
+CRA -- Create React App
+many people cretes project with CRA
+
+->Slow Hot loading
+->uneccessary configuration
+->slow startup
+->difficult configurations
+#command
+npx create -react-app-my-app
+
+//Vite-->
+1.Extremetly fast
+2.HMR-->Hot module replacement
+                                   ctrl+s 
+                                      |
+                                Browser updated immediately 
+                                       |
+                                No full page load 
+
+
+3.Ligth Weigth:only essential package will be installed
+4.Modern Technology:
+uses ES Modules during development
+5.Easy configuration

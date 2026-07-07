@@ -1,0 +1,22 @@
+.dashboard {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.head {
+  margin-top: 20px;  /* Fixed: use margin-top not margin: top */
+  position: absolute; /* Add this so 'top' works */
+  top: 170px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.cards{
+    display: flex;
+    flex-wrap: wrap;
+    gap:80px;
+    margin-top: 20px;  /* Fixed: use margin-top not margin: top */
+  position: absolute; /* Add this so 'top' works */
+  top: 300px;
+  left: 50%;
+  transform: translateX(-50%);
+}
