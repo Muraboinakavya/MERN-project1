@@ -4,7 +4,9 @@ import Navibar from'./components/Navibar'
 // import Student from'./components/Student'
 import Sidebar from'./components/sidebar/sidebar'
 import Footer from'./components/Footer/Footer'
-import Dashboard from './components/Dashboard/Dashboard'
+// import Dashboard from './components/Dashboard/Dashboard'
+import Registration from './Pages/Registration/Registration';
+import {useState} from "react";
 // App.jsx:The Root component
 // Intially every thing is displayed from App.jsx
 // component is a subpart of webpage
@@ -16,13 +18,22 @@ import Dashboard from './components/Dashboard/Dashboard'
 // Babel:it helps to convert the JSX  code into JS code
 
 function App(){
+// const[student,setStudent] = useState(250)
+//   function addstudents(){
+//     setStudent(student+1)
+//     console.log(student)
+//   }
   return( 
     <>
+    {/* <h1>{student}</h1>
+    <button onClick={addstudents}>Add Student</button> */}
     <div>
     <Navibar/>
      <Sidebar/>
+      <Registration/>
      </div>
-     <Dashboard/>
+     {/* <Dashboard/> */}
+     {/* <Registration/> */}
      <Footer/>
     
    
