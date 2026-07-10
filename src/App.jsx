@@ -2,13 +2,20 @@ import './App.css'
 import Navbar from'./components/Navbar/Navbar'
 // import Heading from'./components/Heading'
 // import Student from'./components/Student'
-import Sidebar from'./components/sidebar/sidebar'
+import Sidebar from'./components/Siderbar/Siderbar'
 // import Footer from'./components/Footer/Footer'
 // import Dashboard from './components/Dashboard/Dashboard'
 import Registration from './Pages/Registration/Registration';
- import {useState} from "react";
+//  import {useState} from "react";
 import Login from './Pages/Login/Login';
 import Dashboard from "./components/Dashboard/Dashboard"
+import {Routes,Route} from "react-router-dom";
+import Layout from './components/Layouts/Layout';
+ import { BrowserRouter } from 'react-router-dom';
+import Home from './Pages/Home/Home';
+import NavBar from './components/Navbar/Navbar';
+import StudentTable from './components/StudentTable/StudentTable';
+import Footer from './components/Footer/Footer';
 // App.jsx:The Root component
 // Intially every thing is displayed from App.jsx
 // component is a subpart of webpage
@@ -48,21 +55,55 @@ import Dashboard from "./components/Dashboard/Dashboard"
     
    
 //     </>
-    function App(){
+    // function App(){
+    //   return(
+//         <>
+//           {/* <div>
+//      {/* <Navbar/>
+//     <Sidebar/>
+//     <Dashboard/> */}
+    
+//        <Registration/> 
+
+//       </div> 
+//         <Registration/> 
+//        <Login/>  */}
+//      </>  
+//      )
+// }
+function App(){
       return(
         <>
-         {/* <div>
-     <Navbar/>
-    <Sidebar/>
-    <Dashboard/>
-    
-       <Registration/> 
+        <Routes>
 
-      </div> */}
-       <Registration/> 
-       <Login/> 
-     </> 
-     )
+      <Route path="/Login" element={<Login/>}/>
+      <Route path="/Registration" element={<Registration/>}/>
+      
+      
+     
+    
+
+
+      <Route element={<Layout/>}>
+      <Route  path="/"
+      element={<Home/>}/>
+
+      <Route path="/Dashboard"
+      element={<Dashboard/>}/>
+      </Route>
+      <Route path="/NavBar" element={<NavBar/>}/>
+      <Route path="/studentTable" element={<StudentTable/>}/>
+      {/* <Route path="/Footer" element={<Footer/>}/> */}
+      <Route path="/Sidebar" element={<Sidebar/>}/>
+      <Route path="/Dashboard" element={<Dashboard/>}/>
+      <Route path="/Footer" element={<Footer/>}/>
+      </Routes>
+
+
+     
+
+    </>
+  )
 }
 export default App;
 

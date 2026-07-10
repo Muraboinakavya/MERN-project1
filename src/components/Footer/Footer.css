@@ -1,4 +1,14 @@
-.foot{
-    background-color: azure;
-    padding:10px;
+.foot {
+  background-color: #FFFFFF;
+  border-top: 1px solid #E2E8F0;
+  padding: 1rem 2rem;
+  text-align: center;
+  margin-top: auto; /* Pushes footer to bottom */
+}
+
+.foot footer {
+  color: #64748B;
+  font-size: 0.875rem;
+  font-weight: 400;
+  margin: 0;
 }

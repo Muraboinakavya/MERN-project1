@@ -1,14 +1,24 @@
-.nav{
-    text-align: center;
-}
-.first{
-    background-color: aqua;
-    color: white;
-    padding:10px;
-
-}
-.greet{
-    text-align: end;
-
+.nav {
+  background-color: #FFFFFF !important;
+  border-bottom: 1px solid #E2E8F0 !important;
+  padding: 1rem 2rem !important;
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05) !important;
 }
 
+.first {
+  color: #0F172A !important;
+  font-size: 1.25rem !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+  background: none !important;
+}
+
+.greet {
+  color: #64748B !important;
+  font-size: 0.875rem !important;
+  font-weight: 500 !important;
+  margin: 0 !important;
+}

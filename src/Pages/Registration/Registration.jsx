@@ -1,5 +1,8 @@
 import { useState } from "react";
 import './Registration.css' // 1. CSS import chey
+import StudentTable from "../../components/StudentTable/StudentTable";
+import {Link} from "react-router-dom";
+ 
 
 function Register() {
   const [studentName, setStudentName] = useState("");
@@ -9,7 +12,7 @@ function Register() {
   const [cgpa, setCGPA] = useState("");
   const [errors,setErrors] = useState("");
   const validationError ={};
-  const [students,setStudents] = useState([])
+   const [students,setStudents] = useState([])
   // Array to store all register students
 
   function handleChange(event) {
@@ -129,55 +132,58 @@ console.log(student);
           
           <button type="submit">Register</button><br></br>
 
-        </form>{
+        </form>
+          <Link to={"/Login"}>Already have a account</Link>
+          
+          {<StudentTable students={students}/>
         
-        <hr />
-        /* {/* {students.map((student,index) =>(
-        <div className="preview-section"> {/* preview ki class add chesam */}
-          {/* <h3>Student Details:</h3>
-          <p>{student.studentName}</p>
-          <p> {student.email}</p>
-          <p>{student.password}</p>
-          <p> {student.contact}</p>
-          <p> {student.cgpa}</p>
-        </div> */}
-        {/* ))} */} */
+      //   <hr />
+      //   /* {/* {students.map((student,index) =>(
+      //   <div className="preview-section"> {/* preview ki class add chesam */}
+      //     {/* <h3>Student Details:</h3>
+      //     <p>{student.studentName}</p>
+      //     <p> {student.email}</p>
+      //     <p>{student.password}</p>
+      //     <p> {student.contact}</p>
+      //     <p> {student.cgpa}</p>
+      //   </div> */}
+      //   {/* ))} */} */
       
       
-      <h2>Registered Students</h2>
+      //  <h2>Registered Students</h2>
 
-        {students.length === 0 ? (
-          <p>Students are not found.</p>
-        ) : (
-          <table border="1" cellPadding="10">
-            <thead>
-              <tr>
-                <th>SI.No</th>
-                <th>Student Name</th>
-                <th>Email</th>
-                <th>Phone</th>
-                {/* <th>Branch</th> */}
-                <th>CGPA</th>
-              </tr>
-            </thead>
+      //   {students.length === 0 ? (
+      //     <p>Students are not found.</p>
+      //   ) : (
+      //     <table border="1" cellPadding="10">
+      //       <thead>
+      //         <tr>
+      //           <th>SI.No</th>
+      //           <th>Student Name</th>
+      //           <th>Email</th>
+      //           <th>Phone</th>
+      //           {/* <th>Branch</th> */}
+      //           <th>CGPA</th>
+      //         </tr>
+      //       </thead>
 
-            <tbody>
-              {students.map((student, index) => (
-                <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{student.studentName}</td>
-                  <td>{student.email}</td>
-                  <td>{student.contact}</td>
-                  {/* <td>{student.branch}</td> */}
-                  <td>{student.cgpa}</td>
-                </tr>
-              ))
-              }
-            </tbody>
-          </table>
-        )
+      //       <tbody>
+      //         {students.map((student, index) => (
+      //           <tr key={index}>
+      //             <td>{index + 1}</td>
+      //             <td>{student.studentName}</td>
+      //             <td>{student.email}</td>
+      //             <td>{student.contact}</td>
+      //             {/* <td>{student.branch}</td> */}
+      //             <td>{student.cgpa}</td>
+      //           </tr>
+      //         ))
+      //         }
+      //       </tbody>
+      //     </table>
+      //   )
       }
-          </div>
+          </div> 
         
         </div>
       
@@ -186,4 +192,4 @@ console.log(student);
 
       
       
-export default Register;
+export default Register; 
