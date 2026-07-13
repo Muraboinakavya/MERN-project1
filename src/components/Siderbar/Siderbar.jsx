@@ -26,9 +26,10 @@ function Sidebar(){
             <Link to="/Setting">
             <li>Setting</li><br></br>
             </Link>
-            <Link to="/Logout">
-            <li>Logout</li><br></br>
+            <Link to="/login">
+            <li>Login</li>
             </Link>
+            <li>Logout</li>
         </ul>
         </div>
     );

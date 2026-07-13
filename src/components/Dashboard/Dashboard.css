@@ -77,3 +77,8 @@
 .btn:active {
   transform: scale(0.98);
 }
+.clock{
+  text-align: end;
+  font-family:Arial;
+  background-color: grey;
+  }

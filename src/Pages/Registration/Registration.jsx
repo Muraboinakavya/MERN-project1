@@ -1,10 +1,10 @@
 import { useState } from "react";
 import './Registration.css' // 1. CSS import chey
-import StudentTable from "../../components/StudentTable/StudentTable";
-import {Link} from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
  
 
-function Register() {
+function Registration() {
+
   const [studentName, setStudentName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -12,7 +12,8 @@ function Register() {
   const [cgpa, setCGPA] = useState("");
   const [errors,setErrors] = useState("");
   const validationError ={};
-   const [students,setStudents] = useState([])
+  //  const [students,setStudents] = useState([])
+   const navigate = useNavigate();
   // Array to store all register students
 
   function handleChange(event) {
@@ -41,7 +42,7 @@ function Register() {
         return;
     }
     const passwordpattern =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    if(passwordpattern.test(password)){
+    if(!passwordpattern.test(password)){
         alert("Enter correct password")
     }
     // cgp validation:
@@ -50,25 +51,31 @@ function Register() {
     }
 // Add students to Array
     const student ={ 
+      id:Date.now(),
       studentName, 
       password, 
       email, 
       contact, 
       cgpa
     };
+    const existingStudents = JSON.parse(localStorage.getItem("students")) || []
 // Add students to Array
 // spread operator
-setStudents([...students,student])
-console.log("Registration Successful");
-console.log(student);
-  
+existingStudents.push(student);
+localStorage.setItem(
+  "students",
+  JSON.stringify(existingStudents)
+);
+alert("Registration Successfull");
   // Clear form
     setStudentName("");
     setEmail("");
     setContact("");
     setCGPA("");
     setPassword("");
+   
   }
+  // navigate("/StudentTable");
 
 
   
@@ -133,63 +140,15 @@ console.log(student);
           <button type="submit">Register</button><br></br>
 
         </form>
-          <Link to={"/Login"}>Already have a account</Link>
-          
-          {<StudentTable students={students}/>
-        
-      //   <hr />
-      //   /* {/* {students.map((student,index) =>(
-      //   <div className="preview-section"> {/* preview ki class add chesam */}
-      //     {/* <h3>Student Details:</h3>
-      //     <p>{student.studentName}</p>
-      //     <p> {student.email}</p>
-      //     <p>{student.password}</p>
-      //     <p> {student.contact}</p>
-      //     <p> {student.cgpa}</p>
-      //   </div> */}
-      //   {/* ))} */} */
-      
-      
-      //  <h2>Registered Students</h2>
-
-      //   {students.length === 0 ? (
-      //     <p>Students are not found.</p>
-      //   ) : (
-      //     <table border="1" cellPadding="10">
-      //       <thead>
-      //         <tr>
-      //           <th>SI.No</th>
-      //           <th>Student Name</th>
-      //           <th>Email</th>
-      //           <th>Phone</th>
-      //           {/* <th>Branch</th> */}
-      //           <th>CGPA</th>
-      //         </tr>
-      //       </thead>
-
-      //       <tbody>
-      //         {students.map((student, index) => (
-      //           <tr key={index}>
-      //             <td>{index + 1}</td>
-      //             <td>{student.studentName}</td>
-      //             <td>{student.email}</td>
-      //             <td>{student.contact}</td>
-      //             {/* <td>{student.branch}</td> */}
-      //             <td>{student.cgpa}</td>
-      //           </tr>
-      //         ))
-      //         }
-      //       </tbody>
-      //     </table>
-      //   )
-      }
-          </div> 
-        
-        </div>
-      
-        )
+          <p style={{ marginTop: "15px" }}>
+          Already Have An Account?{" "}
+          <Link to="/Login">Login</Link>
+        </p>
+      </div>
+    </div>
+  );
 }
 
       
       
-export default Register; 
+export default Registration; 

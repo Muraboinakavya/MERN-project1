@@ -1,4 +1,4 @@
-import {Link} from "router-react-dom";
+import {Link} from "react-router-dom";
 import StudentTable from "../../components/StudentTable/StudentTable"
 function Students(){
     return(
@@ -14,3 +14,4 @@ function Students(){
         </>
     );
 }
+export default Students;

@@ -14,8 +14,11 @@ import Layout from './components/Layouts/Layout';
  import { BrowserRouter } from 'react-router-dom';
 import Home from './Pages/Home/Home';
 import NavBar from './components/Navbar/Navbar';
-import StudentTable from './components/StudentTable/StudentTable';
+ import StudentTable from './components/StudentTable/StudentTable';
 import Footer from './components/Footer/Footer';
+import StudentDetailes from './components/StudentDetailes/StudentDetailes'
+import Students from './Pages/Students/Student';
+import Clock from './components/Clock/Clock'
 // App.jsx:The Root component
 // Intially every thing is displayed from App.jsx
 // component is a subpart of webpage
@@ -97,6 +100,8 @@ function App(){
       <Route path="/Sidebar" element={<Sidebar/>}/>
       <Route path="/Dashboard" element={<Dashboard/>}/>
       <Route path="/Footer" element={<Footer/>}/>
+      <Route path="/Students" element={<Students/>}/>
+       <Route path="/Students/:id" element={<StudentDetailes/>}/>
       </Routes>
 
 

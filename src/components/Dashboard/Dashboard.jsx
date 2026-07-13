@@ -1,6 +1,9 @@
-import {useState} from "react";
+// import {useState} from "react";
+import { useState,useEffect } from "react";
 
 import "./Dashboard.css"
+import Clock from "../Clock/Clock";
+
 function Dashboard(){
     const [student,setStudent] = useState(250);
     const [companies,setCompanies] = useState(50);
@@ -28,10 +31,18 @@ function Dashboard(){
     function addcompany(){
         setCompanies(companies+1);
         console.log(companies);
-    }
+    };
+    useEffect(()=>{
+        alert("Hey! Welcome Admin")
+
+    },[]);
     return(
         <div className="dashboard">
-            <h1 className="head">Welcome Back👋</h1><br></br>
+            <h1 className="head">Welcome Back👋 </h1><br></br>
+            <h2 className="clock">
+                <Clock/>
+            </h2>
+            
         
         <div className="cards">
             <div className="card1">
