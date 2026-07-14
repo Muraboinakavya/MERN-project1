@@ -29,7 +29,12 @@ function Sidebar(){
             <Link to="/login">
             <li>Login</li>
             </Link>
+            <Link to="/login">
             <li>Logout</li>
+            </Link>
+            <Link to="/Registration">
+            <li>Registration</li>
+            </Link>
         </ul>
         </div>
     );

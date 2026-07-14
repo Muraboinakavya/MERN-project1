@@ -19,6 +19,7 @@ import Footer from './components/Footer/Footer';
 import StudentDetailes from './components/StudentDetailes/StudentDetailes'
 import Students from './Pages/Students/Student';
 import Clock from './components/Clock/Clock'
+import EditStudents from "./Pages/EditStudent/EditStudent.jsx"
 // App.jsx:The Root component
 // Intially every thing is displayed from App.jsx
 // component is a subpart of webpage
@@ -102,14 +103,18 @@ function App(){
       <Route path="/Footer" element={<Footer/>}/>
       <Route path="/Students" element={<Students/>}/>
        <Route path="/Students/:id" element={<StudentDetailes/>}/>
+       <Route path="/students/edit/:id" element={EdiStudent/>}/>
+       <Route path="/editstudent" element={<EditStudent/>}/>
+ 
+  
+          
       </Routes>
+      </>
 
 
      
-
-    </>
   )
-}
+};
 export default App;
 
 

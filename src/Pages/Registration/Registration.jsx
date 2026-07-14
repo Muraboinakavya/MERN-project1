@@ -49,6 +49,9 @@ function Registration() {
     if(cgpa <0 || cgpa >10){
         alert("Invalid cgpa")
     }
+    function handlesubmit(){
+      e.preventDefault();
+    }
 // Add students to Array
     const student ={ 
       id:Date.now(),
@@ -66,7 +69,7 @@ localStorage.setItem(
   "students",
   JSON.stringify(existingStudents)
 );
-alert("Registration Successfull");
+// alert("Registration Successfull");
   // Clear form
     setStudentName("");
     setEmail("");
@@ -137,7 +140,7 @@ alert("Registration Successfull");
           </div>
           
           
-          <button type="submit">Register</button><br></br>
+          <button type="button">Register</button><br></br>
 
         </form>
           <p style={{ marginTop: "15px" }}>

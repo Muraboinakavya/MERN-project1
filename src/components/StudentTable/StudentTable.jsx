@@ -24,13 +24,14 @@ function StudentTable(){
                 <th>Phone</th>
                 {/* <th>Branch</th> */}
                 <th>CGPA</th>
+                <th>Action</th>
               </tr>
             </thead>
 
             <tbody>
               {students.map((student, index) => (
-                <tr key={student.id}>
-                  <td>{index + 1}</td>
+                <tr key={student.id+1}>
+                  {/* <td>{index + 1}</td> */}
                   <td>{student.id}</td>
                   <td>{student.studentName}</td>
                   <td>{student.email}</td>
@@ -41,7 +42,10 @@ function StudentTable(){
                     <Link to={`/student/${student.id}`}>
                     <button>View</button>
                     </Link>
+                    <br></br>
+                    <button onClick={()=>deletestudent(student.id)}>Delete</button>
                   </td>
+                 
                 </tr>
               ))
               }

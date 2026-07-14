@@ -5,7 +5,7 @@ function Students(){
         <>
         <h1>Student Management</h1>
         <p>Manage all registered students here</p>
-        <Link to="/Register">
+        <Link to="/Registration">
         <button>
             Add New Student
         </button>

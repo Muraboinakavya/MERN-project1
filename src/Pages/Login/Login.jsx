@@ -1,8 +1,10 @@
 import { useState } from "react";
 import "./Login.css";
 import Dashboard from "../../components/Dashboard/Dashboard";
+import {Link,useNavigate} from "react-router-dom"
 
 function Login() {
+  const navigate = useNavigate();
   const [logged, setLogin] = useState(false);
   const [studentName, setStudentName] = useState("");
   const [email, setEmail] = useState("");
@@ -27,14 +29,23 @@ function Login() {
         password === "234567890"
       ) {
         setMessage("Login Successful ✅");
-        setLogin(true);
+       // Save login status
+          localStorage.setItem("isLoggedIn", "true");
+
+          // Save user details
+            localStorage.setItem("studentName", studentName);
+            localStorage.setItem("email", email);
+
+
+          // Navigate to Dashboard
+           navigate("/Dashboard");
       } else {
         setMessage("Invalid Username or Password ❌");
       }
 
       setLoading(false);
     }, 2000);
-  }
+  } 
 
   function handleLogout() {
     setLogin(false);
