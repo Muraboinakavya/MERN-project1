@@ -1,0 +1,40 @@
+.side {
+  width: 250px;
+  background-color: #1E293B !important; /* Dark slate - kills blue gradient */
+  background-image: none !important;
+  min-height: calc(100vh - 60px);
+  padding: 1.5rem 0;
+  border-right: 1px solid #334155;
+}
+
+.side ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side a {
+  text-decoration: none;
+  color: #CBD5E1;
+  display: block;
+}
+
+.side li {
+  padding: 0.75rem 1.5rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.side a:hover li {
+  background-color: #334155;
+  color: #FFFFFF;
+}
+
+/* Active state for NavLink */
+.side a.active li {
+  background-color: #334155;
+  color: #FFFFFF;
+  border-left: 3px solid #3B82F6;
+}
