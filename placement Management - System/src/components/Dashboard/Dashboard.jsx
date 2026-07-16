@@ -1,6 +1,9 @@
-import {useState} from "react";
+// import {useState} from "react";
+import { useState,useEffect } from "react";
 
 import "./Dashboard.css"
+import Clock from "../Clock/Clock";
+
 function Dashboard(){
     const [student,setStudent] = useState(250);
     const [companies,setCompanies] = useState(50);
@@ -15,11 +18,11 @@ function Dashboard(){
         ])
     }
     // Hooks with objects:
-    const [student,setStudent] = useState({
-        name:"kavya",
-        course:"ai"
+    // const [student,setStudent] = useState({
+    //     name:"kavya",
+    //     course:"ai"
 
-    })
+    // })
     function dashboard(){
         setStudent(student+1);
         console.log(student)
@@ -28,14 +31,22 @@ function Dashboard(){
     function addcompany(){
         setCompanies(companies+1);
         console.log(companies);
-    }
+    };
+    useEffect(()=>{
+        alert("Hey! Welcome Admin")
+
+    },[]);
     return(
         <div className="dashboard">
-            <h1 className="head">Welcome Back👋</h1><br></br>
+            <h1 className="head">Welcome Back👋 </h1><br></br>
+            <h2 className="clock">
+                <Clock/>
+            </h2>
+            
         
         <div className="cards">
             <div className="card1">
-                {/* <h3>250</h3> */}
+                 <h3>250</h3> 
                 <p>Total Students</p>
                 <h3>{student}</h3>
                 <button onClick={dashboard} className="btn">Add Student</button>

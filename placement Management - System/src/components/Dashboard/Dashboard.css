@@ -1,22 +1,84 @@
 .dashboard {
-  margin-top: 20px;
-  text-align: center;
+  padding: 2rem;
+  background-color: #F8FAFC; /* Light gray professional background */
+  min-height: calc(100vh - 60px); /* Full height minus navbar */
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
 }
 
 .head {
-  margin-top: 20px;  /* Fixed: use margin-top not margin: top */
-  position: absolute; /* Add this so 'top' works */
-  top: 170px;
-  left: 50%;
-  transform: translateX(-50%);
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #0F172A;
+  margin-bottom: 2rem;
+  /* Remove all your position: absolute stuff */
 }
-.cards{
-    display: flex;
-    flex-wrap: wrap;
-    gap:80px;
-    margin-top: 20px;  /* Fixed: use margin-top not margin: top */
-  position: absolute; /* Add this so 'top' works */
-  top: 300px;
-  left: 50%;
-  transform: translateX(-50%);
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  /* This replaces your position: absolute + top: 300px */
 }
+
+.card1,
+.card2,
+.card3,
+.card4 {
+  background-color: #FFFFFF;
+  border: 1px solid #E2E8F0;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease;
+}
+
+.card1:hover,
+.card2:hover,
+.card3:hover,
+.card4:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.cards h3 {
+  color: #0F172A;
+  font-size: 2.25rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.cards p {
+  color: #64748B;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.btn {
+  background-color: #3B82F6;
+  color: white;
+  border: none;
+  padding: 0.625rem 1.25rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  width: 100%;
+}
+
+.btn:hover {
+  background-color: #2563EB;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+.clock{
+  text-align: end;
+  font-family:Arial;
+  background-color: grey;
+  }

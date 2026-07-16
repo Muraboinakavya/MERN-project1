@@ -1,7 +1,10 @@
 import { useState } from "react";
 import './Registration.css' // 1. CSS import chey
+import { Link,useNavigate } from "react-router-dom";
+ 
 
-function Register() {
+function Registration() {
+
   const [studentName, setStudentName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
@@ -9,6 +12,9 @@ function Register() {
   const [cgpa, setCGPA] = useState("");
   const [errors,setErrors] = useState("");
   const validationError ={};
+  //  const [students,setStudents] = useState([])
+   const navigate = useNavigate();
+  // Array to store all register students
 
   function handleChange(event) {
     setStudentName(event.target.value);
@@ -36,17 +42,43 @@ function Register() {
         return;
     }
     const passwordpattern =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    if(passwordpattern.test(password)){
+    if(!passwordpattern.test(password)){
         alert("Enter correct password")
     }
     // cgp validation:
     if(cgpa <0 || cgpa >10){
         alert("Invalid cgpa")
     }
-
-    console.log({ studentName, password, email, contact, cgpa });
-    alert("Registration Successful");
+// Add students to Array
+    const student ={ 
+      id:Date.now(),
+      studentName, 
+      password, 
+      email, 
+      contact, 
+      cgpa
+    };
+    const existingStudents = JSON.parse(localStorage.getItem("students")) || []
+// Add students to Array
+// spread operator
+existingStudents.push(student);
+localStorage.setItem(
+  "students",
+  JSON.stringify(existingStudents)
+);
+alert("Registration Successfull");
+  // Clear form
+    setStudentName("");
+    setEmail("");
+    setContact("");
+    setCGPA("");
+    setPassword("");
+   
   }
+  // navigate("/StudentTable");
+
+
+  
 
   return (
     <div className="register-container"> {/* 2. inline style ni class ga marchu */}
@@ -60,6 +92,7 @@ function Register() {
               placeholder="Enter Username"
               value={studentName}
               onChange={handleChange} 
+              
             />
             
            </div>
@@ -103,23 +136,19 @@ function Register() {
             />
           </div>
           
+          
           <button type="submit">Register</button><br></br>
 
         </form>
-        
-        <hr />
-        
-        <div className="preview-section"> {/* preview ki class add chesam */}
-          <h3>Live Preview:</h3>
-          <p><strong>Name:</strong> {studentName}</p>
-          <p><strong>Password:</strong> {password}</p>
-          <p><strong>Email:</strong> {email}</p>
-          <p><strong>Contact:</strong> {contact}</p>
-          <p><strong>CGPA:</strong> {cgpa}</p>
-        </div>
+          <p style={{ marginTop: "15px" }}>
+          Already Have An Account?{" "}
+          <Link to="/Login">Login</Link>
+        </p>
       </div>
     </div>
   );
 }
 
-export default Register;
+      
+      
+export default Registration; 
