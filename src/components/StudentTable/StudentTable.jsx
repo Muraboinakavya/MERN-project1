@@ -1,12 +1,23 @@
 import { useEffect, useState } from "react";
 import "./StudentTable.css";
 import { Link } from "react-router-dom";
+import api from "../../API/api"
+ 
 function StudentTable(){
   const [students, setStudents] = useState([]);
   useEffect(()=>{
-    const storestudents = JSON.parse(localStorage.getItem("students")) || [];
-    setStudents(storestudents);
+  fetchStudents();
+    
   },[]);
+  const fetchStudents =async () => {
+    try{
+      const res = await api.get("/students");
+      setStudents(res.data.students);
+    }catch(error){
+     console.log("error fectching students:",error);
+    }
+  };
+  // Console.log(students);
     return(
         <div>
          <h2>Registered Students</h2>
@@ -30,20 +41,21 @@ function StudentTable(){
 
             <tbody>
               {students.map((student, index) => (
-                <tr key={student.id+1}>
-                  {/* <td>{index + 1}</td> */}
-                  <td>{student.id}</td>
+                <tr key={student._id}>
+                  <td>{index + 1}</td> 
+                  
+                  <td>{student._id}</td>
                   <td>{student.studentName}</td>
                   <td>{student.email}</td>
-                  <td>{student.contact}</td>
+                  <td>{student.phone}</td>
                   {/* <td>{student.branch}</td> */}
-                  <td>{student.cgpa}</td>
+                  <td>{student.Cgpa}</td>
                   <td>
-                    <Link to={`/student/${student.id}`}>
+                    <Link to={`/student/${student._id}`}>
                     <button>View</button>
                     </Link>
                     <br></br>
-                    <button onClick={()=>deletestudent(student.id)}>Delete</button>
+                    <button onClick={()=>deletestudent(student._id)}>Delete</button>
                   </td>
                  
                 </tr>

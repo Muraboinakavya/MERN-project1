@@ -58,8 +58,8 @@ function Registration() {
       studentName, 
       password, 
       email, 
-      contact, 
-      cgpa
+      phone, 
+      Cgpa
     };
     const existingStudents = JSON.parse(localStorage.getItem("students")) || []
 // Add students to Array
@@ -73,12 +73,12 @@ localStorage.setItem(
   // Clear form
     setStudentName("");
     setEmail("");
-    setContact("");
-    setCGPA("");
+    setPhone("");
+    setCgpa("");
     setPassword("");
    
   }
-  // navigate("/StudentTable");
+  navigate("/StudentTable");
 
 
   
