@@ -1,149 +1,112 @@
 import { useState } from "react";
-import './Registration.css' // 1. CSS import chey
-import { Link,useNavigate } from "react-router-dom";
- 
+import "./Registration.css";
+import { Link, useNavigate } from "react-router-dom";
+import api from "../../API/api";
 
 function Registration() {
+  const navigate = useNavigate();
 
   const [studentName, setStudentName] = useState("");
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
-  const [contact, setContact] = useState("");
-  const [cgpa, setCGPA] = useState("");
-  const [errors,setErrors] = useState("");
-  const validationError ={};
-  //  const [students,setStudents] = useState([])
-   const navigate = useNavigate();
-  // Array to store all register students
+  const [phone, setPhone] = useState("");
+  const [Cgpa, setCGPA] = useState("");
 
-  function handleChange(event) {
-    setStudentName(event.target.value);
-  }
-
-  function registration(event) {
+  const registration = async (event) => {
     event.preventDefault();
-    if(studentName.trim() === "" ){
-        // alert("Please enter a valid username.");
-        validationError.studentName = "Name is not reqired"
 
-        return;
-    }
-    // if(password.trim() === "" ){
-    //     alert("Please enter a valid password.");
-    //     return;
-    // }
-    const emailpattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    if(!emailpattern.test(email) ){
-        alert("Please enter a valid email.");
-        return;
-    }
-    if(contact.trim() === "" || contact.length !== 10){
-        alert("Please enter a valid 10 digit contact number.");
-        return;
-    }
-    const passwordpattern =/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
-    if(!passwordpattern.test(password)){
-        alert("Enter correct password")
-    }
-    // cgp validation:
-    if(cgpa <0 || cgpa >10){
-        alert("Invalid cgpa")
-    }
-    function handlesubmit(){
-      e.preventDefault();
-    }
-// Add students to Array
-    const student ={ 
-      id:Date.now(),
-      studentName, 
-      password, 
-      email, 
-      phone, 
-      Cgpa
+    const student = {
+      studentName,
+      password,
+      email,
+      phone,
+      Cgpa,
     };
-    const existingStudents = JSON.parse(localStorage.getItem("students")) || []
-// Add students to Array
-// spread operator
-existingStudents.push(student);
-localStorage.setItem(
-  "students",
-  JSON.stringify(existingStudents)
-);
-// alert("Registration Successfull");
-  // Clear form
-    setStudentName("");
-    setEmail("");
-    setPhone("");
-    setCgpa("");
-    setPassword("");
-   
-  }
-  navigate("/StudentTable");
 
+    try {
+      
+      const res = await api.post("/students", student);
 
-  
+      alert(res.data.message);
+
+      setStudentName("");
+      setPassword("");
+      setEmail("");
+      setPhone("");
+      setCGPA("");
+
+      navigate("/studentTable");
+    } catch (error) {
+      console.log(error);
+      alert("Registration Failed");
+    }
+    
+  };
 
   return (
-    <div className="register-container"> {/* 2. inline style ni class ga marchu */}
+    <div className="register-container">
       <div className="register-box">
         <h1>Register Page</h1>
-        
+
         <form onSubmit={registration}>
           <div>
-            <input 
-              type="text" 
+            <input
+              type="text"
               placeholder="Enter Username"
               value={studentName}
-              onChange={handleChange} 
-              
+              onChange={(e) => setStudentName(e.target.value)}
+              required
             />
-            
-           </div>
-          
+          </div>
+
+          {/* Uncomment if password is needed */}
+          {/*
           <div>
-            <input 
-              type="password" 
-              placeholder="Enter the Password"
+            <input
+              type="password"
+              placeholder="Enter Password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)} 
+              onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          
+          */}
+
           <div>
-            <input 
-              type="email" 
-              placeholder="Enter the Email id"
+            <input
+              type="email"
+              placeholder="Enter Email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)} 
+              onChange={(e) => setEmail(e.target.value)}
+              required
             />
           </div>
-          
+
           <div>
-            <input 
-              type="tel" // tel ki marcham
-              placeholder="Enter the contact number"
-              value={contact}
-              onChange={(e) => setContact(e.target.value)}
-              maxLength="10" 
+            <input
+              type="tel"
+              placeholder="Enter Contact Number"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              maxLength="10"
+              required
             />
           </div>
-          
+
           <div>
-            <input 
-              type="number" // number ki marcham
-              placeholder="Enter the CGPA"
-              value={cgpa}
+            <input
+              type="number"
+              placeholder="Enter CGPA"
+              value={Cgpa}
               onChange={(e) => setCGPA(e.target.value)}
               step="0.01"
               max="10"
             />
           </div>
-          
-          
-          <button type="button">Register</button><br></br>
 
+          <button type="submit">Registration</button>
         </form>
-          <p style={{ marginTop: "15px" }}>
+
+        <p style={{ marginTop: "15px" }}>
           Already Have An Account?{" "}
           <Link to="/Login">Login</Link>
         </p>
@@ -152,6 +115,4 @@ localStorage.setItem(
   );
 }
 
-      
-      
-export default Registration; 
+export default Registration;

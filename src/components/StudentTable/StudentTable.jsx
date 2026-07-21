@@ -1,22 +1,40 @@
 import { useEffect, useState } from "react";
 import "./StudentTable.css";
 import { Link } from "react-router-dom";
-import api from "../../API/api"
+import api from "../../API/api";
+
  
 function StudentTable(){
   const [students, setStudents] = useState([]);
+  const[page,setPage] = useState(1);
+  const limit = 5;
+  const[totalpages,setTotalPages] = useState();
   useEffect(()=>{
-  fetchStudents();
+  fetchStudents(page);
     
-  },[]);
-  const fetchStudents =async () => {
+  },);
+  const fetchStudents =async (pageNumber) => {
     try{
-      const res = await api.get("/students");
-      setStudents(res.data.students);
+      const res = await api.get(`/students?page=${pageNumber}&limit=${limit}`);
+      setStudents(res.data.students || [])
+      setTotalPages(res.data.totalpages || 1);
+      // setStudents(res.data.s(pageNumbertudents);
+      setPage(res.data.currentPage || pageNumber);
     }catch(error){
      console.log("error fectching students:",error);
     }
   };
+  const  deleteStudent = async (id) => {
+    try{
+      await api.delete(`/students/${id}`)
+      fetchStudents(page);
+    }catch(error){
+      console.log(error)
+
+    }
+  };
+
+  
   // Console.log(students);
     return(
         <div>
@@ -51,11 +69,16 @@ function StudentTable(){
                   {/* <td>{student.branch}</td> */}
                   <td>{student.Cgpa}</td>
                   <td>
-                    <Link to={`/student/${student._id}`}>
-                    <button>View</button>
+                    <Link to={`/students/edit/${student._id}`}>
+                    <button>Edit</button>
                     </Link>
+                    <button disabled={page === 1} onClick={()=> setPage(page-1)}>
+                      Previous
+
+                    </button>
+                    <span>Page{page} of {totalPages}</span>
                     <br></br>
-                    <button onClick={()=>deletestudent(student._id)}>Delete</button>
+                    <button onClick={()=>deleteStudent (student._id)}>Delete</button>
                   </td>
                  
                 </tr>
@@ -67,5 +90,6 @@ function StudentTable(){
     }
     </div>
     );
-}
+  }
+
 export default StudentTable;

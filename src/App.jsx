@@ -19,7 +19,7 @@ import Footer from './components/Footer/Footer';
 import StudentDetailes from './components/StudentDetailes/StudentDetailes'
 import Students from './Pages/Students/Student';
 import Clock from './components/Clock/Clock'
-import EditStudents from "./Pages/EditStudent/EditStudent.jsx"
+import EditStudent from "./Pages/EditStudent/EditStudent.jsx"
 import {useState,useEffect} from "react";
 // App.jsx:The Root component
 // Intially every thing is displayed from App.jsx
@@ -98,6 +98,7 @@ function App(){
       element={<Dashboard/>}/>
       </Route>
       <Route path="/NavBar" element={<NavBar/>}/>
+       <Route path="/register" element={<Registration/>}/>
       <Route path="/studentTable" element={<StudentTable/>}/>
       {/* <Route path="/Footer" element={<Footer/>}/> */}
       <Route path="/Sidebar" element={<Sidebar/>}/>
@@ -105,7 +106,7 @@ function App(){
       <Route path="/Footer" element={<Footer/>}/>
       <Route path="/Students" element={<Students/>}/>
        <Route path="/Students/:id" element={<StudentDetailes/>}/>
-      <Route path="/students/edit/:id" element={<EditStudents students={students} setStudents={setStudents} />} />
+      <Route path="/students/edit/:id" element={<EditStudent/>}/>
 
   
           
