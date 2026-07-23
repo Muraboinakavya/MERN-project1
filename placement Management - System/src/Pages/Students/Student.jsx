@@ -1,6 +1,7 @@
 import {Link} from "react-router-dom";
-   import api from "../../API/api"; 
-import StudentTable from "../components/StudentTable/StudentTable"
+import {useState} from "react";
+import api from "../../API/api"; 
+import StudentTable from "../../components/StudentTable/StudentTable.jsx"
 function Students(){
     return(
         <>

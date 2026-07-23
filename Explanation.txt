@@ -254,5 +254,26 @@ localStorage.removeItem("isLoggedIn")
 
 
 4.clear Everything:
-localStorage.clear()
+localStorage.clear()      
+
+
+
+
+
+JWT Tokens: json web Token 
+  
+
+  user -->login-->n number of req 
+                       |
+                    server
+
+
+when user raises the request to the  server(login)
+                 |
+            JWT generates 
+                 |
+            Browser stores JWT
+                  |
+        server recognises the user by JWT tokens    
+
 

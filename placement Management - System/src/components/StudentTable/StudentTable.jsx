@@ -13,7 +13,7 @@ function StudentTable() {
     fetchStudents(page); // ✅ Call the right function
   }, ); // ✅ Fixed: added  dependency
 
-  const fetchStudents = async (pageNumber) => { // ✅ Define the function
+  const fetchStudents = async (pageNumber) => {
     try {
       const res = await api.get(`/students?page=${pageNumber}&limit=${limit}`);
       setStudents(res.data.students || []);
